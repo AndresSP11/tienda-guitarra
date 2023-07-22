@@ -2,6 +2,7 @@
     import {ref, reactive} from 'vue'
     import {db} from './data/guitarras'
     import Guitarra from './components/Guitarra.vue'
+    
     const guitarras=ref(db);
     console.log(guitarras.value);
 </script>
@@ -99,7 +100,7 @@
             <!-- AQUI ESTA LA PARTE DE GUITARRA -->
             <Guitarra v-for="guitarra in guitarras" 
             v-bind:guitarra="guitarra">
-
+ 
             </Guitarra>
         </div>
     </main>

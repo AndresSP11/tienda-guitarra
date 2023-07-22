@@ -1,25 +1,33 @@
 <script setup>
+import {ref} from 'vue';
 /* Lanzamos la predefinicion aqui... */
+    const numero=ref(0);
+    /*Una vez propuesto del v-bind de la parte de la APP que vendria ser el html del general*/
     const props= defineProps({
         guitarra:{
             type: Object,
             required: true
         }
     })
+    const incrementar = ()=>{
+        numero.value++;
+    }
 </script>
 
 <template>
     <div  class="col-md-6 col-lg-4 my-4 row align-items-center">
                 <div class="col-4">
-                    <img class="img-fluid"  src="../../public/img/guitarra_01.jpg" alt="imagen guitarra">
+                    <img class="img-fluid" v-bind:src="'../../public/img/'+guitarra.imagen+'.jpg'" :alt="'imagen guitarra'+guitarra.nombre">
                 </div>
                 <div class="col-8">
                     <h3 class="text-black fs-4 fw-bold text-uppercase">{{ guitarra.nombre}}</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quae labore odit magnam in autem nesciunt, amet deserunt</p>
-                    <p class="fw-black text-primary fs-3">{{ }}</p>
+                    <p>{{ numero}}</p>
+                    <p>{{ guitarra.descripcion }}</p>
+                    <p class="fw-black text-primary fs-3">{{ guitarra.precio }}</p>
                     <button 
                         type="button" 
                         class="btn btn-dark w-100 "
+                        @click="incrementar"
                     >Agregar al Carrito</button>
                 </div>
             </div><!-- FIN GUITARRA -->
