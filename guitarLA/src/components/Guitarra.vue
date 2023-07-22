@@ -1,4 +1,5 @@
 <script setup>
+/* Lanzamos la predefinicion aqui... */
     const props= defineProps({
         guitarra:{
             type: Object,
