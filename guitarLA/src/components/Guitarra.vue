@@ -1,5 +1,10 @@
 <script setup>
-
+    const props= defineProps({
+        guitarra:{
+            type: Object,
+            required: true
+        }
+    })
 </script>
 
 <template>
@@ -12,7 +17,7 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quae labore odit magnam in autem nesciunt, amet deserunt</p>
                     <p class="fw-black text-primary fs-3">{{ }}</p>
                     <button 
-                        type="button"
+                        type="button" 
                         class="btn btn-dark w-100 "
                     >Agregar al Carrito</button>
                 </div>
