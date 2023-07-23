@@ -5,13 +5,19 @@
     import Header from './components/Header.vue'
     import Footer from './components/Footer.vue'
     
+    /*Aqui esta la referencia del objeto que se le esta dando*/
     const guitarras=ref(db);
+
+    /*Aqui creamos uno para el carrito de compras*/
     const carrito=ref([]);
-    console.log(guitarras.value);
+    
+    /*Recordar que guitarra.cantidad es parte del objeto del prop que hemos definidos*/
     const guardarCarrito= (guitarra)=>{
         guitarra.cantidad=1;
         carrito.value.push(guitarra);
+        console.log(carrito)
     }
+    
 </script>
 
 <template>
@@ -35,9 +41,9 @@
 
 
     <Footer></Footer>
-  
+
 </template>
 
 <style scoped>
-  
+
 </style>

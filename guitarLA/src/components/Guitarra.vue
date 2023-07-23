@@ -11,7 +11,7 @@ import {ref} from 'vue';
         }
     })
     
-    defineEmits(['incrementar'])
+    defineEmits(['guardarCarrito'])
 </script>
 
 <template>

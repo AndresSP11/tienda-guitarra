@@ -41,7 +41,7 @@
                                         </td>
                                         <td>SRV</td>
                                         <td class="fw-bold">
-                                                $299
+                                                $299    
                                         </td>
                                         <td class="flex align-items-start gap-4">
                                             <button
