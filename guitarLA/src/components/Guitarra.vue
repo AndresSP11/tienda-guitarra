@@ -3,15 +3,15 @@ import {ref} from 'vue';
 /* Lanzamos la predefinicion aqui... */
     const numero=ref(0);
     /*Una vez propuesto del v-bind de la parte de la APP que vendria ser el html del general*/
+    /*pARA PODER TENER LOS VLAORES DEFINIDOS*/
     const props= defineProps({
         guitarra:{
             type: Object,
             required: true
         }
     })
-    const incrementar = ()=>{
-        numero.value++;
-    }
+    
+    defineEmits(['incrementar'])
 </script>
 
 <template>
@@ -27,7 +27,7 @@ import {ref} from 'vue';
                     <button 
                         type="button" 
                         class="btn btn-dark w-100 "
-                        @click="incrementar"
+                        @click="$emit('guardarCarrito',guitarra)"
                     >Agregar al Carrito</button>
                 </div>
             </div><!-- FIN GUITARRA -->
