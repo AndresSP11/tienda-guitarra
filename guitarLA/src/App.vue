@@ -10,17 +10,17 @@
     /*Estamos obteniendo la api , pero no es necesario tener todo lso datos sabemos que db es un arreglo lleno de objetos
     asi que no es tan necesario definir aquello*/
     const guitarras=ref(db);
-
     /*Aqui creamos uno para el carrito de compras*/
     const carrito=ref([]);
     /*########SE CREA FUNCION#######*/
     /*Recordar que guitarra.cantidad es parte del objeto del prop que hemos definidos*/
     const guardarCarrito= (guitarra)=>{
-        guitarra.cantidad=1; /*Se le añade los valores o un atributo más al objeto*/
+        /*aqui se pone la guitarra por cada respectivo for en GUITARRAS*/
+        guitarra.cantidad=1; 
+        /*Se le añade los valores o un atributo más al objeto*/
         carrito.value.push(guitarra);
-        console.log(carrito)
+        console.log(carrito);
     }
-    
 </script>
 
 <template>
