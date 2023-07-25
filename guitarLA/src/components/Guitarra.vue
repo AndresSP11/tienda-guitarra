@@ -10,7 +10,7 @@ import {ref} from 'vue';
             required: true
         }
     })
-    defineEmits(['guardarCarrito'])
+    defineEmits(['guardar-carrito'])
 </script>
 
 <template>

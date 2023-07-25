@@ -1,6 +1,6 @@
 <script setup>
     /*SE CREAN AQUI TODO LOS REF*/
-    import {ref, reactive} from 'vue'
+    import {ref, reactive, onMounted} from 'vue'
     import {db} from './data/guitarras'
     import Guitarra from './components/Guitarra.vue'
     import Header from './components/Header.vue'
@@ -12,20 +12,56 @@
     const guitarras=ref(db);
     /*Aqui creamos uno para el carrito de compras*/
     const carrito=ref([]);
+    const primario=ref(db[3])
+    onMounted(()=>{})
     /*########SE CREA FUNCION#######*/
     /*Recordar que guitarra.cantidad es parte del objeto del prop que hemos definidos*/
+    const guardarLocalStorage=()=>{
+        localStorage.setItem('carrito',JSON.stringify(carrito.value))
+    }
     const guardarCarrito= (guitarra)=>{
+        
+
+        const existeCarrito= carrito.value.findIndex(producto=>producto.id===guitarra.id);
         /*aqui se pone la guitarra por cada respectivo for en GUITARRAS*/
-        guitarra.cantidad=1; 
-        /*Se le añade los valores o un atributo más al objeto*/
+        
+        if(existeCarrito>=0){
+            carrito.value[existeCarrito].cantidad++
+        }else{
+        guitarra.cantidad=1;
         carrito.value.push(guitarra);
-        console.log(carrito);
+        }
+    }
+    const decrementarCantidad=(id)=>{
+        /*eL VALRO QUE SE LE DA "PRODUCTO" es simple un valor o un alias noteien mucha eerelevancia o esta trayendo de otro componente*/
+        const index=carrito.value.findIndex(producto=>producto.id===id)
+        if(carrito.value[index].cantidad>1)
+        carrito.value[index].cantidad--
+    }
+    const aumentarCantidad=(id)=>{
+        const index=carrito.value.findIndex(producto=>producto.id===id)
+        carrito.value[index].cantidad++
+        console.log('AUmentando')
+    }
+    const eliminarProducto= (id)=>{
+        carrito.value=carrito.value.filter(producto=>producto.id!=id)
+    }
+    const vaciarCarrito= (longitud)=>{
+        
+        carrito.value=carrito.value.splice(longitud);
     }
 </script>
 
 <template>
-    <Header :carrito="carrito">
-        
+    <Header 
+    :carrito="carrito"
+    :primario="primario"
+    @guardar-carrito="guardarCarrito"
+    @decrementarCantidad="decrementarCantidad"
+    @aumentarCantidad="aumentarCantidad"
+    @eliminarProducto="eliminarProducto"
+    @vaciarCarrito="vaciarCarrito">
+    
     </Header>
 
 
